@@ -8,5 +8,5 @@ app.use(express.static('static_web'))
 
 app.set('port', (process.env.PORT || 8000));
 app.listen(app.get('port'), () => {
-    console.log("App started on port ", app.get('port'));
+    console.log("App started on port", app.get('port'));
 })
