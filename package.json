@@ -1,0 +1,23 @@
+{
+  "name": "droughtrelief",
+  "version": "1.0.0",
+  "description": "Interactive map to view drought levels and forecast rainfall",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drboyer/droughtrelief.git"
+  },
+  "author": "Devin Boyer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drboyer/droughtrelief/issues"
+  },
+  "homepage": "https://github.com/drboyer/droughtrelief#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
+  }
+}
