@@ -1,0 +1,22 @@
+{
+  "name": "droughtrelief",
+  "description": "Interactive map to view drought levels and forecast rainfall",
+  "main": "server.js",
+  "authors": [
+    "Devin Boyer"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/drboyer/droughtrelief",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static_web/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "uikit": "^2.26.4"
+  }
+}

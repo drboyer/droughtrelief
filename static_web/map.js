@@ -1,4 +1,23 @@
-//$(document).foundation();
+var precip_colormap = [
+    [0.01, '#7FFF00'],
+    [0.10, '#00CD00'],
+    [0.25, '#008B00'],
+    [0.50, '#104E8B'],
+    [0.75, '#1E90FF'],
+    [1.00, '#00B2EE'],
+    [1.25, '#00EEEE'],
+    [1.50, '#8968CD'],
+    [1.75, '#912CEE'],
+    [2.00, '#8B008B'],
+    [2.50, '#8B0000'],
+    [3.00, '#CD0000'],
+    [4.00, '#EE4000'],
+    [5.00, '#FF7F00'],
+    [7.00, '#CD8500'],
+    [10.0, '#FFD700'],
+    [15.0, '#FFFF00'],
+    [20.0, '#FFAEB9']
+];
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHJib3llciIsImEiOiJrcktxVzUwIn0.I_GHLFWptisHJZrXEktGAg';
 var map = new mapboxgl.Map({
@@ -11,11 +30,11 @@ var map = new mapboxgl.Map({
 map.on('load', function() {
     map.addSource('drought', {
         type: 'geojson',
-        data: 'static_data/USDM_20160809_M.geojson'
+        data: './static_data/USDM_20160809_M.geojson'
     });
     map.addSource('qpf', {
         type: 'geojson',
-        data: 'static_data/qpf.geojson'
+        data: './static_data/qpf.geojson'
     });
 
     map.addLayer({
@@ -58,30 +77,28 @@ map.on('load', function() {
         "paint": {
             "fill-color": {
                 property: 'QPF',
-                stops: [
-                    [0.01, '#7FFF00'],
-                    [0.10, '#00CD00'],
-                    [0.25, '#008B00'],
-                    [0.50, '#104E8B'],
-                    [0.75, '#1E90FF'],
-                    [1.00, '#00B2EE'],
-                    [1.25, '#00EEEE'],
-                    [1.50, '#8968CD'],
-                    [1.75, '#912CEE'],
-                    [2.00, '#8B008B'],
-                    [2.50, '#8B0000'],
-                    [3.00, '#CD0000'],
-                    [4.00, '#EE4000'],
-                    [5.00, '#FF7F00'],
-                    [7.00, '#CD8500'],
-                    [10.0, '#FFD700'],
-                    [15.0, '#FFFF00'],
-                    [20.0, '#FFAEB9']
-                ]
+                stops: precip_colormap
             },
             "fill-opacity": 0.8
         }
     }, 'drought');
+});
+
+$(document).ready(function() {
+    // build the precip legend
+    var precip_legend_els = [];
+    for (let level of precip_colormap) {
+        var el = document.createElement('td');
+        var style_attr = document.createAttribute('style');
+        style_attr.value = 'background-color: ' + level[1];
+        var text = document.createTextNode(level[0].toString());
+        el.setAttributeNode(style_attr);
+        el.appendChild(text);
+        precip_legend_els.push(el);
+    }
+
+    $('#precip-legend tr').append(precip_legend_els);
+
 });
 
 // Event handlers below
