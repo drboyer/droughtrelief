@@ -39,3 +39,6 @@ jspm_packages
 
 # Bower components
 static_web/bower_components
+
+# (temporary/downloaded) data files
+data

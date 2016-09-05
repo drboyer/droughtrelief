@@ -30,11 +30,11 @@ var map = new mapboxgl.Map({
 map.on('load', function() {
     map.addSource('drought', {
         type: 'geojson',
-        data: 'static_data/USDM_20160809_M.geojson'
+        data: 'drought.geojson'
     });
     map.addSource('qpf', {
         type: 'geojson',
-        data: 'static_data/qpf.geojson'
+        data: 'qpf.geojson'
     });
 
     map.addLayer({
