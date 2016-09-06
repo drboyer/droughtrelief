@@ -58,6 +58,16 @@ app.get('/drought.geojson', (req, res) => {
     })
 })
 
+app.get('/dates', (req, res) => {
+    var datesHash = {
+        drought: dates.getDroughtMonIssueDateStr(),
+        precipStart: dates.getQPFStartDateStr(),
+        precipEnd: dates.getQPFEndDateStr()
+    }
+
+    res.end(JSON.stringify(datesHash))
+})
+
 /* Below are two helper functions used to update Redis with the new data
    and remove the outdated entries */
 

@@ -33,6 +33,29 @@
                         <table id="precip-legend"><tr></tr></table>
                     </div>
                 </div>
+                <div class="uk-panel uk-panel-box uk-panel-secondary">
+                    <h3 class="uk-panel-title">Data Valid Periods</h3>
+                    <ul>
+                        <li>Drought Monitor Issued: <span id='dates-drought'>-</span></li>
+                        <li>Precip Forecast Valid: <span id='dates-precipStart'>-</span> to <span id='dates-precipEnd'>-</span></li>
+                    </ul>
+                </div>
+                <div class="uk-panel uk-panel-box uk-panel-secondary">
+                    <h3 class="uk-panel-title">Data Sources</h3>
+                    <ul>
+                        <li>Drought data by <a href="http://droughtmonitor.unl.edu/">US Drought Monitor</a></li>
+                        <li>Precipitation forecast produced by <a href="http://www.wpc.ncep.noaa.gov/qpf/qpf2.shtml">US National Weather Service (WPC)</a></li>
+                    </ul>
+                </div>
+                <div class="uk-panel uk-panel-box uk-panel-secondary">
+                    <h3 class="uk-panel-title">About</h3>
+                    <p>This site shows the current drought levels and the 5-day National Weather Service
+                        precipiation forecast across the United States. By overlaying these two datasets, 
+                        you can analyze where drought conditions may improve or worsen over the next 5 days.</p>
+                </div>
+                <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+                    <li><a href="https://github.com/drboyer/droughtrelief/">View Project Source on GitHub</a></li>
+                </ul>
             </div>
         </div>
         <div id='map'></div>

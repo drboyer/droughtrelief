@@ -87,7 +87,7 @@ map.on('load', function() {
 $(document).ready(function() {
     // build the precip legend
     var precip_legend_els = [];
-    for (let level of precip_colormap) {
+    for (var level of precip_colormap) {
         var el = document.createElement('td');
         var style_attr = document.createAttribute('style');
         style_attr.value = 'background-color: ' + level[1];
@@ -98,6 +98,12 @@ $(document).ready(function() {
     }
 
     $('#precip-legend tr').append(precip_legend_els);
+
+    $.getJSON('dates', function(data) {
+        $('#dates-drought').html(data.drought);
+        $('#dates-precipStart').html(data.precipStart);
+        $('#dates-precipEnd').html(data.precipEnd);
+    })
 
 });
 

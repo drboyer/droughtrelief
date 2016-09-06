@@ -37,3 +37,16 @@ body {
     padding: 0px 3px;
     color: black;
 }
+
+/* Sidebar panel overrides */
+h3.uk-panel-title {
+    color: black !important;
+}
+
+.uk-panel a {
+    color: black !important;
+}
+
+.uk-panel a:hover {
+    color: black !important;
+}
