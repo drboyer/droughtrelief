@@ -1,3 +1,4 @@
+// mappings (no pun intended?)
 var precip_colormap = [
     [0.01, '#7FFF00'],
     [0.10, '#00CD00'],
@@ -19,6 +20,16 @@ var precip_colormap = [
     [20.0, '#FFAEB9']
 ];
 
+var drought_mappings = [
+    'No Drought',
+    'Abnormally Dry',
+    'Moderate Drought',
+    'Severe Drought',
+    'Extreme Drought',
+    'Exceptional Drought'
+];
+
+// set up map
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHJib3llciIsImEiOiJrcktxVzUwIn0.I_GHLFWptisHJZrXEktGAg';
 var map = new mapboxgl.Map({
     container: 'map',
@@ -82,6 +93,23 @@ map.on('load', function() {
             "fill-opacity": 0.8
         }
     }, 'drought');
+});
+
+// Display the data layers in the controls panel
+map.on('mousemove', function (e) {
+    var features = map.queryRenderedFeatures(e.point);
+    var qpfAmount = 0, droughtLev = -1;
+    features.forEach(function(feature) {
+        if (feature.layer.id == "qpf" && feature.properties.QPF > qpfAmount) {
+            qpfAmount = feature.properties.QPF;
+        } else if (feature.layer.id == "drought") {
+            droughtLev = feature.properties.DM;
+        } else {
+            return;
+        }
+    });
+    var valuesString = 'Precip Forecast: ' + qpfAmount.toFixed(2) + '", Drought Level: ' + drought_mappings[droughtLev+1];
+    document.getElementById('cursorValues').innerHTML = valuesString;
 });
 
 $(document).ready(function() {
