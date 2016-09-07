@@ -19,7 +19,8 @@ body {
     position: absolute;
     z-index: 1;
     bottom: 5px;
-    left: 5px; 
+    left: 5px;
+    width: 380px;
 }
 
 #controls h4 {

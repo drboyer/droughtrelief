@@ -33,11 +33,11 @@ app.get('/qpf.geojson', (req, res) => {
 
     redisClient.getAsync(qpf_key).then((result) => {
         if (result == null) {
-            console.log('Downloading new QPF forecast data')
+            console.log('==> Downloading new QPF forecast data')
             dataDownloader.getQPFStream(res)
             updateRedisQPF()
         } else {
-            console.log('Getting QPF data from Redis')
+            console.log('==> Fetching QPF data from Redis')
             res.end(result)
         }
     })
@@ -48,11 +48,11 @@ app.get('/drought.geojson', (req, res) => {
 
     redisClient.getAsync(drought_key).then((result) => {
         if (result == null) {
-            console.log('Downloading new Drought Monitor data')
+            console.log('==> Downloading new Drought Monitor data')
             dataDownloader.getDroughtMonStream(res)
             updateRedisDrought()
         } else {
-            console.log('Getting Drought Monitor data from Redis')
+            console.log('==> Fetching Drought Monitor data from Redis')
             res.end(result)
         }
     })
@@ -82,7 +82,7 @@ function updateRedisQPF() {
         dataDownloader.getQPFAsString()
         dataDownloader.on('qpfJSON-done', (data) => {
             redisClient.setAsync(qpf_key, data).then(() => {
-                console.log('Added QPF data to Redis. Key: ' + qpf_key)
+                console.log('==> Added QPF data to Redis. Key: ' + qpf_key)
             })
         })
     })
@@ -99,7 +99,7 @@ function updateRedisDrought() {
         dataDownloader.getDroughtMonAsString()
         dataDownloader.on('droughtJSON-done', (data) => {
             redisClient.setAsync(drought_key, data).then(() => {
-                console.log('Added QPF data to Redis. Key: ' + drought_key)
+                console.log('==> Added QPF data to Redis. Key: ' + drought_key)
             })
         })
     })
